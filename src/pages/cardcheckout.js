@@ -18,8 +18,9 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 function Checkout() {
   const [error, setError] = React.useState('');
-  const [transactionSuccess, setTransactionState] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [s, setS] = React.useState(false);
+
 
 
   // const [displayerror, setDisplayError] = React.useState(false);
@@ -56,8 +57,10 @@ function Checkout() {
           // error = res.data.error;
           // setDisplayError(true);
         } else {
-          setError(res.data.response);
-          errorColor = "green";
+          // setError(res.data.response);
+          // errorColor = "green";
+          
+          setS(true);
           setLoading(false);
           
         }
@@ -67,7 +70,7 @@ function Checkout() {
       .catch((err) => console.log(err))
 
   }
-  if (transactionSuccess) {
+  if (s) {
     return (
       <TransactionSuccess/>
     );
